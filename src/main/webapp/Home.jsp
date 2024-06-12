@@ -124,35 +124,9 @@ import="java.util.*,Model.Bean.ProductBean,Model.CartModel"%>
         </div>
         
        	<script type="text/javascript" src="./javascript/HomeAnimations.js"></script>
-       	
-       	<script type="text/javascript">
-	        
-	    </script>
+       	<script type="text/javascript" href="./javascript/barraDiRicerca.js"></script> 
 	    
 	<%@ include file="html/footer.html" %>     
     </body>
 </html>
 
-
-<%--
-<tr>
-<td><%=bean.getID()%></td>
-<td><%=bean.getNome()%></td>
-<td><%=bean.getDescrizione()%></td>
-<td><%=bean.getPrezzo()%></td>
-<td><%=bean.getGrammatura()%></td>
-<td><%=bean.getCategoria()%></td>
-<td><%=bean.getQTA_magazzino()%></td>
-<td><%=bean.getPercentualeSconto()%></td>
-<td><%=bean.getColorazione()%></td>
-<td>
-<a href="productsView?action=read&ProductID=<%=bean.getID()%>">descrizione</a>
-
-<form action="Cart" method="POST">
-<input type="hidden" name="action" value="AddToCart">
-<input type="hidden" name="ProductID" value="<%=bean.getID()%>">
-<input type="submit" value="Add to cart">
-</form>
-</td>
-</tr>
---%>
