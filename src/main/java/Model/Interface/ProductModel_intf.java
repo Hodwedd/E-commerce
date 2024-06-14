@@ -14,4 +14,6 @@ public interface ProductModel_intf {
 	public ProductBean doRetrieveByKey(int code) throws SQLException;
 	
 	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
+
+	public StringBuilder doRetrieveByInput(String string) throws SQLException;
 }

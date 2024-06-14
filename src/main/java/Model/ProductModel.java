@@ -201,6 +201,51 @@ public class ProductModel implements ProductModel_intf {
         
         return products;
     }
+ 	
+ 	 public StringBuilder doRetrieveByInput(String input) throws SQLException {
+ 		 
+     	 StringBuilder prodotti = new StringBuilder("["); // Uso StringBuilder per efficienza
+     	 
+         //presumiamo che le immagini siano 1 per prodotto , servirebbe un campo per la principale //FATTOs
+         String selectSQL = "SELECT " + TABLE_PRODOTTO + ".*" +
+ 			                "FROM " + TABLE_PRODOTTO + " JOIN " + TABLE_IMG + " ON " + 
+ 			                TABLE_PRODOTTO + ".ID = " + TABLE_IMG + ".PRODOTTO_ID "
+ 			                + " WHERE "+ TABLE_IMG + ".RUOLO = 'principale'"
+ 			                + " AND " + TABLE_PRODOTTO + ".nome LIKE ?";
+         // evitiamo di prendere prodotti se eroneamente non hanno immagini , forse è una cosa inutile
+         // eseguo la query per prendere i prodotti
+         try {
+             connection = ds.getConnection();
+             pstmt = connection.prepareStatement(selectSQL);
+             pstmt.setString(1, "%" + input + "%");
+             System.out.println(pstmt.toString());
+
+             ResultSet rs = pstmt.executeQuery();
+             while (rs.next()) {                             
+            	 prodotti.append("{")
+                 .append("\"Id\": ").append(rs.getInt("ID")).append(", ")
+                 .append("\"nome\": \"").append(rs.getString("nome")).append("\"")
+                 .append("}, ");
+             }
+             
+             //rimuovo l'ultima virgola 
+             if (prodotti.length() > 1) {
+                 prodotti.setLength(prodotti.length() - 2);
+             }
+             
+             prodotti.append("]");
+
+         } finally {
+             try {
+                 if (pstmt != null)
+                 	pstmt.close();
+             } finally {
+ 				connection.close();
+             }
+         }
+         
+         return prodotti;
+     }
 	 
 
 	@Override

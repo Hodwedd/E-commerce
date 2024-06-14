@@ -124,7 +124,6 @@ import="java.util.*,Model.Bean.ProductBean,Model.CartModel"%>
         </div>
         
        	<script type="text/javascript" src="./javascript/HomeAnimations.js"></script>
-       	<script type="text/javascript" href="./javascript/barraDiRicerca.js"></script> 
 	    
 	<%@ include file="html/footer.html" %>     
     </body>

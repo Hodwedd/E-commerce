@@ -15,12 +15,15 @@
             </div> 
             
             <!-- barra ricerca -->  
-            
-            <form action="" method="">
-                <input onKeyDown="a()" type="text" placeholder="Cerca.." name="search" id="barraRicerca">
-                <button type="submit" id="ricerca"><img src="../img/ricerca.png" alt="logo"></img></button>
-            </form>
-            
+	        <form action="")>
+	             <div class="nascondi-risultati">
+	                <input type="text" placeholder="Cerca.." name="search" id="barraRicerca" oninput="attendiECerca()" onblur="nascondiRisultatiRicerca()">
+	                <div class="dropdown-content" id="risultatiRicerca">
+		              
+		            </div>
+				</div>
+	                <button type="submit" id="ricerca"><img src="../img/ricerca.png" alt="logo"></img></button>
+	            </form>              
 
             
             <div>
@@ -34,7 +37,7 @@
                     <!-- Barra di navigazione -->
     <ul id="nav-menu">
         <li class="dropdown viso">
-            <a id="aa" href="#">Viso</a>
+            <a href="#">Viso</a>
             <div class="dropdown-content">
               <a href="#">viso 1</a>
               <a href="#">viso 2</a>
@@ -68,6 +71,7 @@
     </ul>
 </nav>
 
+<script type="text/javascript" src="./javascript/barraDiRicerca.js"></script> 
 <script>
     document.getElementById('hamburger').addEventListener('click', function () {
         var navMenu = document.getElementById('nav-menu');

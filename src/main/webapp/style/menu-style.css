@@ -59,7 +59,7 @@ nav > div > div > a > img{
   height: 30px;
 }
 /* modifico il form della barra di ricerca*/
-nav > div > form{
+nav > div form{
     height: inherit;
     width: 100%;
     padding: 30px;
@@ -67,7 +67,7 @@ nav > div > form{
     vertical-align: middle;
 }
 
-nav > div > form > #barraRicerca{
+nav > div form  #barraRicerca{
     border-radius: 0px 0px 0px 0px;
     border: none;
     margin: 0px 2px 0px 0px;
@@ -79,12 +79,58 @@ nav > div > form > #barraRicerca{
     max-width: 500px;
 }
 
-nav > div > form > input:focus{
+    .nascondi-risultati{
+        height: inherit;
+    	width: 100%;
+    	min-width: 200px;
+    	max-width: 500px;
+    	display: inline-block; 	
+    }
+  
+   #risultatiRicerca{
+   	width: inherit;
+    height: max-content;
+    transition: 0.4s;
+    min-width: 200px;
+    max-width: 500px;
+   	z-index: 3;
+   	display: flex;
+   	   	
+   	background-color: rgba(0,0,0,0.2);
+   	backdrop-filter: blur(5px);
+   }
+   
+   #singolo-risultato:hover{
+   	   	background-color: rgba(0,0,0,0.4);
+   	   	backdrop-filter: blur(10px);
+   }   
+   
+   #singolo-risultato{
+   	   display: flex;
+   	   align-items: center;
+   }
+
+   
+   #singolo-risultato > img{
+   	   height: 60px;
+   	   width: 60px;
+   	   margin-right: 10px;
+   }
+   
+   #singolo-risultato > span{
+   	   font-size: 1.2em;
+   	   font-weight: 600;
+   	   color: white;
+   	   text-shadow: 0px 0px 3px black;
+   }
+   
+   
+nav > div form  input:focus{
   outline: none;
   box-shadow: 0px 0px 5px rgb(159, 159, 159) inset;
 }
 
-nav > div > form > button{
+nav > div form > button{
   /*border-radius: 0px 25px 25px 0px;*/
   border: none;
   margin-right: 10px;
@@ -92,7 +138,7 @@ nav > div > form > button{
   width: max-content;
   background-color: rgb(241, 241, 241);
 }
-nav > div > form > button > img{
+nav > div form > button > img{
   border-radius: 0px 25px 25px 0px;
   border: none;
   margin-right: 10px;
@@ -190,6 +236,18 @@ nav li > a {
     display: block;
   }
 
+
+
+
+
+   
+   
+   
+   
+   
+   
+   
+   
   @media (max-width: 600px) {
 	html{
 		padding: 70px 0px 0px 0px;
@@ -343,5 +401,7 @@ nav li > a {
       transform: translate(21px,-8px) rotatez(45deg);
     
     }
+    
+
     
 }
