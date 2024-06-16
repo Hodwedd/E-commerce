@@ -147,7 +147,9 @@ public class UserControl extends HttpServlet {
 	        				request.getSession().setAttribute("adminRoles", true);
 	                    else 
 	        				request.getSession().setAttribute("adminRoles", false);
-		
+	                    
+	                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+	                    dispatcher.forward(request, response);
 	                } else {
 	                    // L'utente non esiste o la password non è corretta
 	                    // mostra un messaggio di errore
@@ -194,11 +196,15 @@ public class UserControl extends HttpServlet {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LoginRegistrazione.jsp");
                 dispatcher.forward(request, response);
             }
+	        
+	        
             
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
-            dispatcher.forward(request, response);
-
-        } // non so se bisogna fare qualcosa se l'action è vuoto
+        }
+        else{
+        	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+	        dispatcher.forward(request, response);
+	        // non so se bisogna fare qualcosa se l'action è vuoto
+        }
     }
 
     @Override

@@ -140,7 +140,7 @@
 	</div>
 
     <%@ include file="html/footer.html" %>
-    
+    <script type="text/javascript" src="./javascript/barraDiRicerca.js"></script> 
     <script type="text/javascript" src="./javascript/FormValidation.js"></script>
 </body>
 

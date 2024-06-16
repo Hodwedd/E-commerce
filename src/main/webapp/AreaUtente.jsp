@@ -11,7 +11,9 @@
         <%@ include file="./html/menu.html" %>
         <%
         	UserBean user;
-        
+        	boolean isAdmin = (boolean) request.getSession().getAttribute("adminRoles");
+        	System.out.println("admin : " + isAdmin);
+        	
         	user = (UserBean) request.getAttribute("datiUtente");
             if (user != null) {
             	System.out.println(user.toString());
@@ -37,6 +39,15 @@
                         <button onclick="location.href='#'">Carrello</button>
                         <button onclick="location.href='#'">Impostazioni Account</button>
                         <button onclick="location.href='#'">Logout</button>
+                        <%
+                        	if(isAdmin){
+                        %>
+                        <button onclick="location.href='#'">Modifica Prodotto</button>
+                        <button onclick="location.href='./admin/InserisciProdotto.jsp'">Inserisci Prodotto</button>
+                        <button onclick="location.href='#'">Visualizza Utenti</button>                        
+                        <%
+                        	}
+                        %>
                     </div>
                     
                 </section>
