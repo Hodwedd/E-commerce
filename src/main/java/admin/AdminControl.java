@@ -20,17 +20,24 @@ import javax.servlet.http.Part;
 
 import GestioneIMG.IMGmodel;
 import Model.ProductModel;
+import Model.UserModel;
 import Model.Bean.ProductBean;
 import Model.Interface.ProductModel_intf;
+import Model.Interface.UserModel_intf;
 
-@MultipartConfig
+@MultipartConfig(
+	    fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+	    maxFileSize = 1024 * 1024 * 10,      // 10 MB
+	    maxRequestSize = 1024 * 1024 * 50    // 50 MB
+	)
 public class AdminControl extends HttpServlet {
 	
 	static String SAVE_DIR ="/uploadTemp";
 	private static final long serialVersionUID = 1L;
 	
 	static AzioniAdminModel_intf model = new AzioniAdminModel();
-	
+	static UserModel_intf userModel = new UserModel();
+
 	public AdminControl() {
 		super();
 	}
@@ -77,12 +84,13 @@ public class AdminControl extends HttpServlet {
 		        	//model.inserisciImmaginiProdotto(p);
 		        	System.out.println("Inesrimenti : " + esito);
 		        }
-	        	System.out.println("INIZIAMO CON LE PARTI");
 	        	ArrayList<Part> parti = (ArrayList<Part>) request.getParts();
+	        	
 	        	 //ogni campo del form rappresenta una parte
 	        	 //l'ultima parte è il campo nascosto action
 	        	 //utilizzo questo metodo perchè implemento funzioni forniteci dalla prof 
 	        	 //che lavorano questa struttura dati
+	        	
 		        insImmagine(request.getServletContext().getRealPath(""),Integer.parseInt(id),"principale",parti.get(parti.size()- 3));
 		        System.out.println("primo : " + parti.get(parti.size()- 3).getName());
 		        insImmagine(request.getServletContext().getRealPath(""),Integer.parseInt(id),"secondaria",parti.get(parti.size()- 2));
@@ -95,11 +103,16 @@ public class AdminControl extends HttpServlet {
 		        	response.sendRedirect(request.getContextPath() + "/admin/InserisciProdotto.jsp");
 		        }
 		    }                 
-		    else if (action.equalsIgnoreCase("mostraUtenti")){
+		    else if (action.equalsIgnoreCase("visualizzaUtenti")){
 		     	request.removeAttribute("Utenti");
-
+		     	
+		     	try {
+					request.setAttribute("listaUtenti", userModel.getUtenti());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		        
-		        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Home.jsp");
+		        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Utenti.jsp");
 		        dispatcher.forward(request, response);	
 		     }
 		     else {

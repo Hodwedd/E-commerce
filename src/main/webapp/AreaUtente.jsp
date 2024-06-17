@@ -29,22 +29,20 @@
                         <p><strong>Email:</strong> <%= user.getEmail() %> </p>
                         <p><strong>Indirizzo:</strong> <%= user.getIndirizzoBase() %> </p>
                         <p><strong>Numero di telefono:</strong> <%= user.getNumeroDiTelefono() %> </p>
-                        <a href="/User?action=logout">Logout</a>
                     </div>
                 </section>
                 <section class="user-actions">
                     <h2>Azioni</h2>
                     <div class="actions">
                         <button onclick="location.href='#'">Storico Ordini</button>
-                        <button onclick="location.href='#'">Carrello</button>
-                        <button onclick="location.href='#'">Impostazioni Account</button>
-                        <button onclick="location.href='#'">Logout</button>
+                        <button onclick="location.href='/Cart?action=visualizza'">Carrello</button>
+                        <button onclick="location.href='/User?action=logout'">Logout</button>
                         <%
                         	if(isAdmin){
                         %>
                         <button onclick="location.href='#'">Modifica Prodotto</button>
                         <button onclick="location.href='./admin/InserisciProdotto.jsp'">Inserisci Prodotto</button>
-                        <button onclick="location.href='#'">Visualizza Utenti</button>                        
+                        <button onclick="location.href='./Admin?action=visualizzaUtenti'">Visualizza Utenti</button>                        
                         <%
                         	}
                         %>

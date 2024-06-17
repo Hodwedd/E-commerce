@@ -38,10 +38,10 @@
                 <label for="colorazione">Colorazione</label>
                 <input type="text" id="colorazione" name="colorazione" required>
 
-                <label for="immagine1">Immagine 1</label>
+                <label for="immagine1">Immagine Principale [png,jpg]</label>
                 <input type="file" id="immagine1" name="immagine1" required>
 
-                <label for="immagine2">Immagine 2</label>
+                <label for="immagine2">Immagine Secondaria [png,jpg]</label>
                 <input type="file" id="immagine2" name="immagine2" required>
                 
                 <input type="hidden" id="action" name="action" value="inserisciProdotto" required>

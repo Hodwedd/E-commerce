@@ -5,6 +5,8 @@ import Model.Interface.UserModel_intf;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.naming.Context;
@@ -217,4 +219,47 @@ public class UserModel implements UserModel_intf {
         return user;
         
     }
+    
+	public Collection<UserBean> getUtenti() throws SQLException{
+
+        UserBean user = new UserBean();
+        Collection<UserBean> utenti = new ArrayList<UserBean>();
+        String sql = "SELECT utente.* FROM utente";
+
+        try {
+            connection = ds.getConnection();
+            pstmt = connection.prepareStatement(sql);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+	            while(rs.next()) {
+	            	user.setNome(rs.getString("nome"));
+	            	user.setCognome(rs.getString("cognome"));
+	                user.setID(rs.getInt("ID"));
+	                user.setUserName(rs.getString("USER_NAME"));
+	                user.setPassword(rs.getString("password"));
+	                user.setEmail(rs.getString("email"));
+	                user.setCartID(-1);
+	                user.setIndirizzoBase(rs.getString("indirizzoBase"));
+	                user.setNumeroDiTelefono(rs.getString("telefono"));
+	                user.setPermessiAdmin(rs.getBoolean("permessi_admin"));
+	                
+	                utenti.add(user);
+	            }   
+            } else {
+                System.out.println("accesso negato, l'utente non è stato trovato");
+            }
+
+        }finally {
+            if (pstmt != null) 
+                    pstmt.close();
+            if (connection != null) 
+                    connection.close();   
+        }
+
+        return utenti;
+        	
+	}
+
 }

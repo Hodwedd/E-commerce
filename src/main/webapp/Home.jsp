@@ -21,7 +21,6 @@ import="java.util.*,Model.Bean.ProductBean,Model.CartModel"%>
         <%@ include file="./html/menu.html" %>
 
         <div id="cards-container">
-		<h1><a href="/admin/prova.html"></a></h1>
             <%
                 Collection<?> products = (Collection<?>) request.getAttribute("products");
 				int i = 0;
